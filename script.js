@@ -150,4 +150,18 @@
 
   document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;memoriesModal.hidden=true;closeSurpriseModal()});
   document.querySelectorAll('.gallery img').forEach(img=>img.addEventListener('error',()=>{img.onerror=null;img.src='./public/photos/photo-placeholder.svg';img.style.objectFit='cover'}));
-})();
+})();// Disable right-click
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+
+// Disable common developer/source shortcuts
+document.addEventListener("keydown", (e) => {
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase())) ||
+    (e.ctrlKey && e.key.toUpperCase() === "U")
+  ) {
+    e.preventDefault();
+  }
+});
